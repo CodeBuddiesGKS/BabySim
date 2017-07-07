@@ -25,7 +25,10 @@ export class BabyCareComponent implements OnInit {
     constructor(private appService: AppService) {}
 
     ngOnInit() {
+        this.canvas = $('#babyCanvas')[0]; //document.getElementById('babyCanvas');
+        this.context = this.canvas.getContext('2d');
         this.drawBaby();
+        this.drawStats();
     }
 
     getGender(baby) {
@@ -88,11 +91,6 @@ export class BabyCareComponent implements OnInit {
     }
 
     drawBaby() {
-        this.canvas = $('#babyCanvas')[0]; //document.getElementById('babyCanvas');
-        this.context = this.canvas.getContext('2d');
-        //this.context.fillStyle = 'red';
-        //this.context.fillRect(0, 0, 200, 100); //x,y,width,height
-        
         //Body
         this.context.fillStyle = this.getSkinColor(this.babySelected);
         this.context.beginPath();
@@ -177,5 +175,27 @@ export class BabyCareComponent implements OnInit {
         this.context.closePath();
         this.context.fill();
         this.outlineShape();
+    }
+
+    drawStats() {
+        //Stat Container
+        this.context.fillStyle = '#efefef';
+        this.context.beginPath();
+        this.context.rect(20, 300, 360, 280); //x,y,width,height
+        this.context.closePath();
+        this.context.fill();
+        this.context.stroke();
+        //Crap Label
+        this.context.fillStyle = 'black';
+        this.context.font = "10pt 'Press Start 2P'";
+        this.context.fillText('Crap-o-meter:', 30, 330);
+        //Stat Container
+        this.context.fillStyle = 'saddlebrown';
+        this.context.strokeStyle = 'firebrick';
+        this.context.beginPath();
+        this.context.rect(30, 335, 340, 30); //x,y,width,height
+        this.context.closePath();
+        this.context.fill();
+        this.context.stroke();
     }
 }
