@@ -40,6 +40,26 @@ export class BabyCareComponent implements OnInit {
         }
     }
 
+    feed() {
+        this.babySelected.starviness -= 1;
+        this.drawStats();
+    }
+
+    clean() {
+        this.babySelected.crapiness -= 1;
+        this.drawStats();
+    }
+
+    sleep() {
+        this.babySelected.snooziness -= 1;
+        this.drawStats();
+    }
+
+    cuddle() {
+        this.babySelected.grumpiness -= 1;
+        this.drawStats();
+    }
+
     abandon() {
         this.appService.load();
         this.navigateTo.emit(CurrentBabyPage.BabySelector);
@@ -181,19 +201,103 @@ export class BabyCareComponent implements OnInit {
         //Stat Container
         this.context.fillStyle = '#efefef';
         this.context.beginPath();
-        this.context.rect(20, 300, 360, 280); //x,y,width,height
+        this.context.rect(20, 280, 360, 300); //x,y,width,height
         this.context.closePath();
         this.context.fill();
         this.context.stroke();
+
+        //Stave Label
+        this.context.fillStyle = 'black';
+        this.context.font = "10pt 'Press Start 2P'";
+        this.context.fillText('Starve-o-meter:', 50, 310);
+        //Starve Container
+        this.context.fillStyle = '#337ab7';
+        this.context.beginPath();
+        this.context.rect(50, 310, 300, 40); //x,y,width,height
+        this.context.closePath();
+        this.context.fill();
+        this.context.stroke();
+        //Starve Progress
+        this.context.fillStyle = 'yellow';
+        this.context.strokeStyle = 'white';
+        this.context.beginPath();
+        var x = 25;
+        for (let i=0; i<this.babySelected.starviness; i++) {
+            x = x + 30;
+            this.context.rect(x, 315, 20, 30); //x,y,width,height
+        }
+        this.context.closePath();
+        this.context.fill();
+        this.context.stroke();
+
         //Crap Label
         this.context.fillStyle = 'black';
         this.context.font = "10pt 'Press Start 2P'";
-        this.context.fillText('Crap-o-meter:', 30, 330);
-        //Stat Container
-        this.context.fillStyle = 'saddlebrown';
-        this.context.strokeStyle = 'firebrick';
+        this.context.fillText('Crap-o-meter:', 50, 380);
+        //Crap Container
+        this.context.fillStyle = '#337ab7';
         this.context.beginPath();
-        this.context.rect(30, 335, 340, 30); //x,y,width,height
+        this.context.rect(50, 380, 300, 40); //x,y,width,height
+        this.context.closePath();
+        this.context.fill();
+        this.context.stroke();
+        //Crap Progress
+        this.context.fillStyle = 'yellow';
+        this.context.strokeStyle = 'white';
+        this.context.beginPath();
+        var x = 25;
+        for (let i=0; i<this.babySelected.crapiness; i++) {
+            x = x + 30;
+            this.context.rect(x, 385, 20, 30); //x,y,width,height
+        }
+        this.context.closePath();
+        this.context.fill();
+        this.context.stroke();
+
+        //Snooze Label
+        this.context.fillStyle = 'black';
+        this.context.font = "10pt 'Press Start 2P'";
+        this.context.fillText('Snooze-o-meter:', 50, 450);
+        //Snooze Container
+        this.context.fillStyle = '#337ab7';
+        this.context.beginPath();
+        this.context.rect(50, 450, 300, 40); //x,y,width,height
+        this.context.closePath();
+        this.context.fill();
+        this.context.stroke();
+        //Snooze Progress
+        this.context.fillStyle = 'yellow';
+        this.context.strokeStyle = 'white';
+        this.context.beginPath();
+        var x = 25;
+        for (let i=0; i<this.babySelected.snooziness; i++) {
+            x = x + 30;
+            this.context.rect(x, 455, 20, 30); //x,y,width,height
+        }
+        this.context.closePath();
+        this.context.fill();
+        this.context.stroke();
+
+        //Grump Label
+        this.context.fillStyle = 'black';
+        this.context.font = "10pt 'Press Start 2P'";
+        this.context.fillText('Grump-o-meter:', 50, 520);
+        //Grump Container
+        this.context.fillStyle = '#337ab7';
+        this.context.beginPath();
+        this.context.rect(50, 520, 300, 40); //x,y,width,height
+        this.context.closePath();
+        this.context.fill();
+        this.context.stroke();
+        //Grump Progress
+        this.context.fillStyle = 'yellow';
+        this.context.strokeStyle = 'white';
+        this.context.beginPath();
+        var x = 25;
+        for (let i=0; i<this.babySelected.grumpiness; i++) {
+            x = x + 30;
+            this.context.rect(x, 525, 20, 30); //x,y,width,height
+        }
         this.context.closePath();
         this.context.fill();
         this.context.stroke();

@@ -4,15 +4,18 @@ import { HairColor } from './hair-color';
 import { SkinColor } from './skin-color';
 
 export class Baby {
+    public name: string;
     public age: number = 0;
+    
     public eyeColor: EyeColor;
     public gender: Gender;
     public hairColor: HairColor;
-    public hunger: number = 0;
-    public name: string;
-    public shittiness: number = 0;
     public skinColor: SkinColor;
-    public sleepiness: number = 0;
+
+    public crapiness: number = 10;
+    public grumpiness: number = 10;
+    public snooziness: number = 10;
+    public starviness: number = 10;
     
     constructor(eyeColor: EyeColor,
                 gender: Gender,
