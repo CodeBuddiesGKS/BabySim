@@ -93,87 +93,87 @@ export class BabyCareComponent implements OnInit {
         //this.context.fillStyle = 'red';
         //this.context.fillRect(0, 0, 200, 100); //x,y,width,height
         
+        //Body
+        this.context.fillStyle = this.getSkinColor(this.babySelected);
+        this.context.beginPath();
+        this.context.arc(150, 160, 80, 0, 2*Math.PI, false); //x,y,radius,startAngle,endAngle,antiClockwise
+        this.context.closePath();
+        this.context.fill();
+        this.outlineShape();
         //Head
         this.context.fillStyle = this.getSkinColor(this.babySelected);
         this.context.beginPath();
-        this.context.arc(100, 100, 50, 0, 2*Math.PI, false); //x,y,radius,startAngle,endAngle,antiClockwise
+        this.context.arc(70, 70, 50, 0, 2*Math.PI, false); //x,y,radius,startAngle,endAngle,antiClockwise
         this.context.closePath();
         this.context.fill();
         this.outlineShape();
         //Hat
         this.context.fillStyle = this.getGenderColor(this.babySelected);
         this.context.beginPath();
-        this.context.arc(100, 100, 50, this.degreeToRadians(160),this.degreeToRadians(300), false); //x,y,radius,startAngle,endAngle,antiClockwise
+        this.context.arc(70, 70, 50, this.degreeToRadians(160),this.degreeToRadians(300), false); //x,y,radius,startAngle,endAngle,antiClockwise
         this.context.closePath();
         this.context.fill();
         this.outlineShape();
         //Hat Ball
         this.context.fillStyle = this.getGenderColor(this.babySelected);
         this.context.beginPath();
-        this.context.arc(65, 65, 5, 0, 2*Math.PI, false); //x,y,radius,startAngle,endAngle,antiClockwise
+        this.context.arc(35, 35, 5, 0, 2*Math.PI, false); //x,y,radius,startAngle,endAngle,antiClockwise
         this.context.closePath();
         this.context.fill();
         this.outlineShape();
         //Left Eye
         this.context.fillStyle = this.getEyeColor(this.babySelected);
         this.context.beginPath();
-        this.context.arc(90, 110, 5, 0, 2*Math.PI, false); //x,y,radius,startAngle,endAngle,antiClockwise
+        this.context.arc(60, 80, 5, 0, 2*Math.PI, false); //x,y,radius,startAngle,endAngle,antiClockwise
         this.context.closePath();
         this.context.fill();
         this.outlineShape();
         //Right Eye
         this.context.fillStyle = this.getEyeColor(this.babySelected);
         this.context.beginPath();
-        this.context.arc(115, 85, 5, 0, 2*Math.PI, false); //x,y,radius,startAngle,endAngle,antiClockwise
+        this.context.arc(85, 55, 5, 0, 2*Math.PI, false); //x,y,radius,startAngle,endAngle,antiClockwise
         this.context.closePath();
         this.context.fill();
         this.outlineShape();
         //Mouth
         this.context.fillStyle = 'lightpink';
         this.context.beginPath();
-        this.context.arc(115, 115, 20, this.degreeToRadians(300), this.degreeToRadians(150), false); //x,y,radius,startAngle,endAngle,antiClockwise
-        this.context.closePath();
-        this.context.fill();
-        this.outlineShape();
-        //Body
-        this.context.fillStyle = this.getSkinColor(this.babySelected);
-        this.context.beginPath();
-        this.context.arc(180, 200, 80, 0, 2*Math.PI, false); //x,y,radius,startAngle,endAngle,antiClockwise
+        this.context.arc(85, 85, 20, this.degreeToRadians(300), this.degreeToRadians(150), false); //x,y,radius,startAngle,endAngle,antiClockwise
         this.context.closePath();
         this.context.fill();
         this.outlineShape();
         //Left Arm
         this.context.fillStyle = this.getSkinColor(this.babySelected);
         this.context.beginPath();
-        this.context.arc(100, 200, 20, 0, 2*Math.PI, false); //x,y,radius,startAngle,endAngle,antiClockwise
+        this.context.arc(70, 160, 20, 0, 2*Math.PI, false); //x,y,radius,startAngle,endAngle,antiClockwise
         this.context.closePath();
         this.context.fill();
         this.outlineShape();
         //Right Arm
         this.context.fillStyle = this.getSkinColor(this.babySelected);
         this.context.beginPath();
-        this.context.arc(200, 120, 20, 0, 2*Math.PI, false); //x,y,radius,startAngle,endAngle,antiClockwise
+        this.context.arc(170, 80, 20, 0, 2*Math.PI, false); //x,y,radius,startAngle,endAngle,antiClockwise
         this.context.closePath();
         this.context.fill();
         this.outlineShape();
         //Underware
         this.context.fillStyle = 'white';
         this.context.beginPath();
-        this.context.arc(180, 200, 80, this.degreeToRadians(320), this.degreeToRadians(140), false); //x,y,radius,startAngle,endAngle,antiClockwise
+        this.context.arc(150, 160, 80, this.degreeToRadians(320), this.degreeToRadians(140), false); //x,y,radius,startAngle,endAngle,antiClockwise
         this.context.closePath();
         this.context.fill();
         this.outlineShape();
         //Left Leg
         this.context.fillStyle = this.getSkinColor(this.babySelected);
         this.context.beginPath();
-        this.context.arc(180, 280, 20, 0, 2*Math.PI, false); //x,y,radius,startAngle,endAngle,antiClockwise
+        this.context.arc(150, 240, 20, 0, 2*Math.PI, false); //x,y,radius,startAngle,endAngle,antiClockwise
         this.context.closePath();
         this.context.fill();
         this.outlineShape();
         //Right Leg
         this.context.fillStyle = this.getSkinColor(this.babySelected);
         this.context.beginPath();
-        this.context.arc(260, 200, 20, 0, 2*Math.PI, false); //x,y,radius,startAngle,endAngle,antiClockwise
+        this.context.arc(230, 160, 20, 0, 2*Math.PI, false); //x,y,radius,startAngle,endAngle,antiClockwise
         this.context.closePath();
         this.context.fill();
         this.outlineShape();
