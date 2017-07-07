@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-offset-2 col-md-8">
+      <h1 class="text-center">Baby Simulator 2017</h1>
+      <h2>Take care of {{babySelected?.name}}</h2>
+
+      <div class="row">
+        <div class="col-xs-12 col-md-offset-2 col-md-8">
+          <div class="text-center" style="margin-bottom: 15px;">
+            <canvas id="babyCanvas" height="400" width="400" style="background-color: powderblue;">
+              Canvas not supported!
+            </canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-3">
+          <div style="margin-bottom: 15px;">
+            <button class="btn btn-primary btn-block">Feed</button>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+          <div style="margin-bottom: 15px;">
+            <button class="btn btn-primary btn-block">Clean</button>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+          <div style="margin-bottom: 15px;">
+            <button class="btn btn-primary btn-block">Sleep</button>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+          <div style="margin-bottom: 15px;">
+            <button class="btn btn-primary btn-block">Cuddle</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" style="margin-bottom: 60px;">
+        <div class="col-xs-12">
+          <button class="btn btn-danger btn-block" (click)="abandon()">Abandon</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,95 @@
+.background-dots {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgb(240, 240, 240);
+  opacity: 0.95;
+  z-index: 10000;
+}
+
+.loading-dots {
+  text-indent: -1500px;
+  font-size: 10px;
+  width: 300px;
+  height: 300px;
+  display: inline-block;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  margin-top: calc(50vh - 150px);
+  margin-left: calc(50vw - 150px);
+}
+
+.background-dna {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #292929;
+  opacity: 0.95;
+  z-index: 10000;
+}
+
+.loading-dna {
+  text-indent: -1500px;
+  font-size: 10px;
+  width: 800px;
+  height: 600px;
+  display: inline-block;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  margin-top: calc(50vh - 300px);
+  margin-left: calc(50vw - 400px);
+}
+
+.background-circle-wave {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #000000;
+  opacity: 0.95;
+  z-index: 10000;
+}
+
+.loading-circle-wave {
+  text-indent: -1500px;
+  font-size: 10px;
+  width: 800px;
+  height: 600px;
+  display: inline-block;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  margin-top: calc(50vh - 300px);
+  margin-left: calc(50vw - 400px);
+}
+
+.background-blue-wireframe {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #5087D2;
+  opacity: 0.95;
+  z-index: 10000;
+}
+
+.loading-blue-wireframe {
+  text-indent: -1500px;
+  font-size: 10px;
+  width: 500px;
+  height: 500px;
+  display: inline-block;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  margin-top: calc(50vh - 250px);
+  margin-left: calc(50vw - 250px);
+}

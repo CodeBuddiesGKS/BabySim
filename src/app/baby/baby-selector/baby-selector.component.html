@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-offset-2 col-xs-8">
+      <h1 class="text-center">Baby Simulator 2017</h1>
+      <h2>Select a Baby to take care of:</h2>
+      <button class="btn btn-warning btn-block" *ngFor="let baby of appService?.babies" (click)="takeCare(baby)">
+        <i class="fa" [ngClass]="getGender(baby)" aria-hidden="true"></i>
+        {{baby.name}}
+      </button>
+      <button class="btn btn-success btn-block" (click)="conceive()">Do the nasty</button>
+    </div>
+  </div>
+</div>

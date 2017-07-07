@@ -1,0 +1,151 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-offset-2 col-xs-8">
+      <h1 class="text-center">Baby Simulator 2017</h1>
+      <h3 class="text-center">Design your new baby:</h3>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <div class="text-center">Pick a name:</div>
+            <input class="text-center form-control" name="name" [(ngModel)]="name" />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 text-center">
+          <div>Pick a gender:</div>
+          <div class="quad-flex-container">
+            <div class="quad-flex-child tl" [ngClass]="{'selected-tile': gender=='Female'}" style="background-color: pink;" (click)="gender='Female'">
+              <div class="quad-flex-content">
+                <i class="fa fa-venus fa-4x" style="display: block;" aria-hidden="true"></i>
+                Female
+              </div>
+            </div>
+            <div class="quad-flex-child tr" [ngClass]="{'selected-tile': gender=='Male'}" style="background-color: cornflowerblue;" (click)="gender='Male'">
+              <div class="quad-flex-content">
+                <i class="fa fa-mars fa-4x" style="display: block;" aria-hidden="true"></i>
+                Male
+              </div>
+            </div>
+            <div class="quad-flex-child bl" [ngClass]="{'selected-tile': gender=='Transgender'}" style="background-color: purple;" (click)="gender='Transgender'">
+              <div class="quad-flex-content">
+                <i class="fa fa-transgender fa-4x" style="display: block;" aria-hidden="true"></i>
+                Transgender
+              </div>
+            </div>
+            <div class="quad-flex-child br" [ngClass]="{'selected-tile': gender=='Other'}" style="background-color: darkslategrey;" (click)="gender='Other'">
+              <div class="quad-flex-content">
+                <i class="fa fa-genderless fa-4x" style="display: block;" aria-hidden="true"></i>
+                Other
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6 text-center">
+          <div>Pick a skin color:</div>
+          <div class="quad-flex-container">
+            <div class="quad-flex-child tl" [ngClass]="{'selected-tile': skinColor=='Pasty'}" style="background-color: #ffdbac;" (click)="skinColor='Pasty'">
+              <div class="quad-flex-content">
+                <i class="fa fa-smile-o fa-4x" style="display: block;" aria-hidden="true"></i>
+                Pasty
+              </div>
+            </div>
+            <div class="quad-flex-child tr" [ngClass]="{'selected-tile': skinColor=='Caramel'}" style="background-color: #c68642" (click)="skinColor='Caramel'">
+              <div class="quad-flex-content">
+                <i class="fa fa-smile-o fa-4x" style="display: block;" aria-hidden="true"></i>
+                Caramel
+              </div>
+            </div>
+            <div class="quad-flex-child bl" [ngClass]="{'selected-tile': skinColor=='Mocha'}" style="background-color: #8d5524" (click)="skinColor='Mocha'">
+              <div class="quad-flex-content">
+                <i class="fa fa-smile-o fa-4x" style="display: block;" aria-hidden="true"></i>
+                Mocha
+              </div>
+            </div>
+            <div class="quad-flex-child br" [ngClass]="{'selected-tile': skinColor=='Midnight'}" style="background-color: #2e160a" (click)="skinColor='Midnight'">
+              <div class="quad-flex-content">
+                <i class="fa fa-smile-o fa-4x" style="display: block;" aria-hidden="true"></i>
+                Midnight
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 text-center">
+          <div>Pick a hair color:</div>
+          <div class="quad-flex-container">
+            <div class="quad-flex-child tl" [ngClass]="{'selected-tile': hairColor=='Blonde'}" style="background-color: #f2da91;" (click)="hairColor='Blonde'">
+              <div class="quad-flex-content">
+                <div class="fa-stack fa-lg inline-block" style="transform: scale(1.5);">
+                  <i class="fa fa-cloud fa-stack-1x" style="transform: translateY(-15px);" aria-hidden="true"></i>
+                  <i class="fa fa-user fa-stack-2x" aria-hidden="true"></i>
+                </div>
+                <div style="display: block; margin-top: 10px;">Blonde</div>
+              </div>
+            </div>
+            <div class="quad-flex-child tr" [ngClass]="{'selected-tile': hairColor=='Red'}" style="background-color: #a53900;" (click)="hairColor='Red'">
+              <div class="quad-flex-content">
+                <div class="fa-stack fa-lg inline-block" style="transform: scale(1.5);">
+                  <i class="fa fa-cloud fa-stack-1x" style="transform: translateY(-15px);" aria-hidden="true"></i>
+                  <i class="fa fa-user fa-stack-2x" aria-hidden="true"></i>
+                </div>
+                <div style="display: block; margin-top: 10px;">Red</div>
+              </div>
+            </div>
+            <div class="quad-flex-child bl" [ngClass]="{'selected-tile': hairColor=='Brown'}" style="background-color: #4d2612;" (click)="hairColor='Brown'">
+              <div class="quad-flex-content">
+                <div class="fa-stack fa-lg inline-block" style="transform: scale(1.5);">
+                  <i class="fa fa-cloud fa-stack-1x" style="transform: translateY(-15px);" aria-hidden="true"></i>
+                  <i class="fa fa-user fa-stack-2x" aria-hidden="true"></i>
+                </div>
+                <div style="display: block; margin-top: 10px;">Brown</div>
+              </div>
+            </div>
+            <div class="quad-flex-child br" [ngClass]="{'selected-tile': hairColor=='Black'}" style="background-color: #000000;" (click)="hairColor='Black'">
+              <div class="quad-flex-content">
+                <div class="fa-stack fa-lg inline-block" style="transform: scale(1.5);">
+                  <i class="fa fa-cloud fa-stack-1x" style="transform: translateY(-15px);" aria-hidden="true"></i>
+                  <i class="fa fa-user fa-stack-2x" aria-hidden="true"></i>
+                </div>
+                <div style="display: block; margin-top: 10px;">Black</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6 text-center">
+          <div>Pick an eye color:</div>
+          <div class="quad-flex-container">
+            <div class="quad-flex-child tl" [ngClass]="{'selected-tile': eyeColor=='Blue'}" style="background-color: #699BCB;" (click)="eyeColor='Blue'">
+              <div class="quad-flex-content">
+                <i class="fa fa-eye fa-4x" style="display: block;" aria-hidden="true"></i>
+                Blue
+              </div>
+            </div>
+            <div class="quad-flex-child tr" [ngClass]="{'selected-tile': eyeColor=='Green'}" style="background-color: #6B7E47" (click)="eyeColor='Green'">
+              <div class="quad-flex-content">
+                <i class="fa fa-eye fa-4x" style="display: block;" aria-hidden="true"></i>
+                Green
+              </div>
+            </div>
+            <div class="quad-flex-child bl" [ngClass]="{'selected-tile': eyeColor=='Hazel'}" style="background-color: #776536" (click)="eyeColor='Hazel'">
+              <div class="quad-flex-content">
+                <i class="fa fa-eye fa-4x" style="display: block;" aria-hidden="true"></i>
+                Hazel
+              </div>
+            </div>
+            <div class="quad-flex-child br" [ngClass]="{'selected-tile': eyeColor=='Brown'}" style="background-color: #603101" (click)="eyeColor='Brown'">
+              <div class="quad-flex-content">
+                <i class="fa fa-eye fa-4x" style="display: block;" aria-hidden="true"></i>
+                Brown
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="padding-top: 15px; margin-bottom: 60px;">
+        <button class="btn btn-success btn-block" (click)="giveBirth()">Give Birth</button>
+      </div>
+    </div>
+  </div>
+</div>

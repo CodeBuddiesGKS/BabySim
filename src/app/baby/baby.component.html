@@ -1,0 +1,11 @@
+<div [ngSwitch]="currentPage">
+    <div *ngSwitchCase="0">
+        <baby-selector (navigateTo)="navigateTo($event)" (babySelected)="babySelected=$event"></baby-selector>
+    </div>
+    <div *ngSwitchCase="1">
+        <baby-generator (navigateTo)="navigateTo($event)"></baby-generator>
+    </div>
+    <div *ngSwitchCase="2">
+        <baby-care (navigateTo)="navigateTo($event)" *ngIf="babySelected" [babySelected]="babySelected"></baby-care>
+    </div>
+</div>
