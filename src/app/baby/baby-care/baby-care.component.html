@@ -6,9 +6,28 @@
 
       <div class="row">
         <div class="col-xs-12 text-center" style="margin-bottom: 15px;">
-            <canvas id="babyCanvas" height="600" width="400" [ngStyle]="canvasStyle()">
-              Canvas not supported!
-            </canvas>
+          <div class="wrapper">
+            <div class="parent" [@instructionState]="instState">
+              <div class="instr-front side">
+                <canvas id="babyCanvas" height="600" width="400" [ngStyle]="canvasStyle()">
+                  Canvas not supported!
+                </canvas>
+              </div>
+              <div class="instr-back side">
+                <div style="margin-left: 15px;">
+                  <h2>Instructions:</h2>
+                  <ul>
+                    <li>The goal is completely remove your baby's grumpiness</li>
+                    <li>Cuddling is the only way to reduce grumpiness, but it will wake the baby up, squeeze the crap out of them, and therefore make them more hungry</li>
+                    <li>If you don't feed your baby in time it will starve</li>
+                    <li>If you don't clean your baby in time it will die of dysentery</li>
+                    <li>If your baby doesn't sleep in time it will die of exhaustion</li>
+                    <li>Try to raise your baby as soon as possible</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -32,6 +51,12 @@
           <div style="margin-bottom: 15px;">
             <button class="btn btn-primary btn-block" (click)="cuddle()" [disabled]="babySelected?.isDead || babySelected?.isSuccessful" >Cuddle</button>
           </div>
+        </div>
+      </div>
+
+      <div class="row" style="margin-bottom: 15px;">
+        <div class="col-xs-12">
+          <button class="btn btn-info btn-block" (click)="toggleStates()">Instructions</button>
         </div>
       </div>
 

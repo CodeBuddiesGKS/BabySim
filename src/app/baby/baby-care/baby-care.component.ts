@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core'
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 import { AppService } from '../../core/app.service';
 
@@ -14,7 +15,19 @@ import $ from 'jquery';
 @Component( {
     selector: 'baby-care',
     templateUrl: './baby-care.component.html',
-    styleUrls: ['./baby-care.component.scss']
+    styleUrls: ['./baby-care.component.scss'],
+    animations: [
+        trigger('instructionState', [
+            state('open', style({
+                transform: 'rotateY(0)'
+            })),
+            state('closed', style({
+                transform: 'rotateY(180deg)'
+            })),
+            transition('open => closed', animate('300ms')),
+            transition('closed => open', animate('300ms')),
+        ]),
+    ]
 })
 export class BabyCareComponent implements OnInit {
     @Input() babySelected;
@@ -22,6 +35,8 @@ export class BabyCareComponent implements OnInit {
     private backButtonName: string;
     private canvas;
     private context;
+    private instState: string = "open";
+    private canState: string = "closed";
 
     constructor(private appService: AppService) {}
 
@@ -31,6 +46,11 @@ export class BabyCareComponent implements OnInit {
         this.context = this.canvas.getContext('2d');
         this.drawBaby();
         this.drawStats();
+    }
+
+    toggleStates() {
+        this.instState = this.instState == "open" ? "closed" : "open";
+        this.canState = this.canState == "open" ? "closed" : "open";
     }
 
     getGender(baby) {
