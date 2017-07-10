@@ -6,7 +6,7 @@
 
       <div class="row">
         <div class="col-xs-12 text-center" style="margin-bottom: 15px;">
-            <canvas id="babyCanvas" height="600" width="400" style="background-color: powderblue;">
+            <canvas id="babyCanvas" height="600" width="400" [ngStyle]="canvasStyle()">
               Canvas not supported!
             </canvas>
         </div>
@@ -15,29 +15,29 @@
       <div class="row">
         <div class="col-xs-12 col-sm-3">
           <div style="margin-bottom: 15px;">
-            <button class="btn btn-primary btn-block" (click)="feed();">Feed</button>
+            <button class="btn btn-primary btn-block" (click)="feed();" [disabled]="babySelected?.isDead || babySelected?.isSuccessful">Feed</button>
           </div>
         </div>
         <div class="col-xs-12 col-sm-3">
           <div style="margin-bottom: 15px;">
-            <button class="btn btn-primary btn-block" (click)="clean()">Clean</button>
+            <button class="btn btn-primary btn-block" (click)="clean()" [disabled]="babySelected?.isDead || babySelected?.isSuccessful">Clean</button>
           </div>
         </div>
         <div class="col-xs-12 col-sm-3">
           <div style="margin-bottom: 15px;">
-            <button class="btn btn-primary btn-block" (click)="sleep()">Sleep</button>
+            <button class="btn btn-primary btn-block" (click)="sleep()" [disabled]="babySelected?.isDead || babySelected?.isSuccessful">Sleep</button>
           </div>
         </div>
         <div class="col-xs-12 col-sm-3">
           <div style="margin-bottom: 15px;">
-            <button class="btn btn-primary btn-block" (click)="cuddle()">Cuddle</button>
+            <button class="btn btn-primary btn-block" (click)="cuddle()" [disabled]="babySelected?.isDead || babySelected?.isSuccessful" >Cuddle</button>
           </div>
         </div>
       </div>
 
       <div class="row" style="margin-bottom: 60px;">
         <div class="col-xs-12">
-          <button class="btn btn-danger btn-block" (click)="abandon()">Abandon</button>
+          <button class="btn btn-danger btn-block" (click)="abandon()">{{backButtonName}}</button>
         </div>
       </div>
     </div>

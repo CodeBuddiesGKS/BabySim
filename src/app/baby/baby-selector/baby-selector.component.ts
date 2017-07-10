@@ -33,7 +33,7 @@ export class BabySelectorComponent implements OnInit {
     }
 
     takeCare(baby) {
-        //this.appService.load();
+        this.appService.load();
         this.babySelected.emit(baby);
         this.navigateTo.emit(CurrentBabyPage.BabyCare);
     }

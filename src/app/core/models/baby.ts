@@ -4,8 +4,11 @@ import { HairColor } from './hair-color';
 import { SkinColor } from './skin-color';
 
 export class Baby {
-    public name: string;
     public age: number = 0;
+    public causeOfDeath: string[] = [];
+    public isDead: boolean = false;
+    public isSuccessful: boolean = false;
+    public name: string;
     
     public eyeColor: EyeColor;
     public gender: Gender;
@@ -13,7 +16,7 @@ export class Baby {
     public skinColor: SkinColor;
 
     public crapiness: number = 10;
-    public grumpiness: number = 10;
+    public grumpiness: number = 12;
     public snooziness: number = 10;
     public starviness: number = 10;
     

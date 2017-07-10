@@ -19,12 +19,14 @@ import $ from 'jquery';
 export class BabyCareComponent implements OnInit {
     @Input() babySelected;
     @Output() navigateTo = new EventEmitter<CurrentBabyPage>();
+    private backButtonName: string;
     private canvas;
     private context;
 
     constructor(private appService: AppService) {}
 
     ngOnInit() {
+        this.backButtonName = "Abandon";
         this.canvas = $('#babyCanvas')[0]; //document.getElementById('babyCanvas');
         this.context = this.canvas.getContext('2d');
         this.drawBaby();
@@ -41,26 +43,90 @@ export class BabyCareComponent implements OnInit {
     }
 
     feed() {
-        this.babySelected.starviness -= 1;
-        this.drawStats();
+        this.babySelected.starviness -= 3;
+        if (this.babySelected.starviness < -1) {
+            this.babySelected.starviness = -1;
+        }
+        this.age();
+        if (!this.babySelected.isDead && !this.babySelected.isSuccessful) {
+            this.drawStats();
+        }
     }
 
     clean() {
-        this.babySelected.crapiness -= 1;
-        this.drawStats();
+        this.babySelected.crapiness -= 4;
+        if (this.babySelected.crapiness < -1) {
+            this.babySelected.crapiness = -1;
+        }
+        this.age();
+        if (!this.babySelected.isDead && !this.babySelected.isSuccessful) {
+            this.drawStats();
+        }
     }
 
     sleep() {
-        this.babySelected.snooziness -= 1;
-        this.drawStats();
+        this.babySelected.snooziness -= 5;
+        if (this.babySelected.snooziness < -1) {
+            this.babySelected.snooziness = -1;
+        }
+        this.age();
+        if (!this.babySelected.isDead && !this.babySelected.isSuccessful) {
+            this.drawStats();
+        }
     }
 
     cuddle() {
-        this.babySelected.grumpiness -= 1;
-        this.drawStats();
+        this.babySelected.starviness += 2;
+        this.babySelected.crapiness += 2;
+        this.babySelected.snooziness += 2;
+        this.babySelected.grumpiness--;
+        if (this.babySelected.grumpiness == 0) {
+            this.win(this.babySelected.name + " grew up and moved out of your house. You Win!!!");
+        }
+        this.age();
+        if (!this.babySelected.isDead && !this.babySelected.isSuccessful) {
+            this.drawStats();
+        }
+    }
+
+    age() {
+        this.babySelected.age++;
+        this.babySelected.starviness++;
+        if (this.babySelected.starviness > 12) {
+            this.babySelected.causeOfDeath.push(this.babySelected.name + " starved to death!!!");
+        }
+        this.babySelected.crapiness++;
+        if (this.babySelected.crapiness > 12) {
+            this.babySelected.causeOfDeath.push(this.babySelected.name + " crapped to death!!!");
+        }
+        this.babySelected.snooziness++;
+        if (this.babySelected.snooziness > 12) {
+            this.babySelected.causeOfDeath.push(this.babySelected.name + " died from sleep");
+            this.babySelected.causeOfDeath.push("deprivation!!!");
+        }
+        if (this.babySelected.starviness > 12 || this.babySelected.crapiness > 12 || this.babySelected.snooziness > 12) {
+            this.die();
+        }
+    }
+
+    die() {
+        this.babySelected.isDead = true;
+        this.backButtonName = "Bury Baby Corpse";
+        this.drawLoss();
+    }
+
+    win(winningMessage: string) {
+        this.babySelected.isSuccessful = true;
+        this.backButtonName = "Move on with my life";
+        console.log(winningMessage);
+        this.drawWin();
     }
 
     abandon() {
+        if (this.babySelected.isDead || this.babySelected.isSuccessful) {
+            let i = this.appService.babies.indexOf(this.babySelected);
+            this.appService.babies.splice(i, 1);
+        }
         this.appService.load();
         this.navigateTo.emit(CurrentBabyPage.BabySelector);
     }
@@ -107,6 +173,16 @@ export class BabyCareComponent implements OnInit {
             case 'Caramel': return '#c68642';
             case 'Mocha': return '#8d5524';
             case 'Midnight': return '#2e160a';
+        }
+    }
+
+    canvasStyle() {
+        if (this.babySelected.isDead) {
+            return { 'background-color': '#d9534f' }
+        } else if (this.babySelected.isSuccessful) {
+            return { 'background-color': '#5cb85c' }
+        } else {
+            return { 'background-color': 'powderblue' }
         }
     }
 
@@ -198,6 +274,8 @@ export class BabyCareComponent implements OnInit {
     }
 
     drawStats() {
+        this.drawAge();
+
         //Stat Container
         this.context.fillStyle = '#efefef';
         this.context.beginPath();
@@ -206,14 +284,15 @@ export class BabyCareComponent implements OnInit {
         this.context.fill();
         this.context.stroke();
 
-        //Stave Label
+        //Starve Label
         this.context.fillStyle = 'black';
         this.context.font = "10pt 'Press Start 2P'";
         this.context.fillText('Starve-o-meter:', 50, 310);
         //Starve Container
         this.context.fillStyle = '#337ab7';
+        this.context.strokeStyle = 'black';
         this.context.beginPath();
-        this.context.rect(50, 310, 300, 40); //x,y,width,height
+        this.context.rect(49, 310, 305, 40); //x,y,width,height
         this.context.closePath();
         this.context.fill();
         this.context.stroke();
@@ -221,10 +300,10 @@ export class BabyCareComponent implements OnInit {
         this.context.fillStyle = 'yellow';
         this.context.strokeStyle = 'white';
         this.context.beginPath();
-        var x = 25;
+        var x = 30;
         for (let i=0; i<this.babySelected.starviness; i++) {
-            x = x + 30;
-            this.context.rect(x, 315, 20, 30); //x,y,width,height
+            x = x + 25;
+            this.context.rect(x, 315, 17.5, 30); //x,y,width,height
         }
         this.context.closePath();
         this.context.fill();
@@ -236,8 +315,9 @@ export class BabyCareComponent implements OnInit {
         this.context.fillText('Crap-o-meter:', 50, 380);
         //Crap Container
         this.context.fillStyle = '#337ab7';
+        this.context.strokeStyle = 'black';
         this.context.beginPath();
-        this.context.rect(50, 380, 300, 40); //x,y,width,height
+        this.context.rect(49, 380, 305, 40); //x,y,width,height
         this.context.closePath();
         this.context.fill();
         this.context.stroke();
@@ -245,10 +325,10 @@ export class BabyCareComponent implements OnInit {
         this.context.fillStyle = 'yellow';
         this.context.strokeStyle = 'white';
         this.context.beginPath();
-        var x = 25;
+        var x = 30;
         for (let i=0; i<this.babySelected.crapiness; i++) {
-            x = x + 30;
-            this.context.rect(x, 385, 20, 30); //x,y,width,height
+            x = x + 25;
+            this.context.rect(x, 385, 17.5, 30); //x,y,width,height
         }
         this.context.closePath();
         this.context.fill();
@@ -260,8 +340,9 @@ export class BabyCareComponent implements OnInit {
         this.context.fillText('Snooze-o-meter:', 50, 450);
         //Snooze Container
         this.context.fillStyle = '#337ab7';
+        this.context.strokeStyle = 'black';
         this.context.beginPath();
-        this.context.rect(50, 450, 300, 40); //x,y,width,height
+        this.context.rect(49, 450, 305, 40); //x,y,width,height
         this.context.closePath();
         this.context.fill();
         this.context.stroke();
@@ -269,10 +350,10 @@ export class BabyCareComponent implements OnInit {
         this.context.fillStyle = 'yellow';
         this.context.strokeStyle = 'white';
         this.context.beginPath();
-        var x = 25;
+        var x = 30;
         for (let i=0; i<this.babySelected.snooziness; i++) {
-            x = x + 30;
-            this.context.rect(x, 455, 20, 30); //x,y,width,height
+            x = x + 25;
+            this.context.rect(x, 455, 17.5, 30); //x,y,width,height
         }
         this.context.closePath();
         this.context.fill();
@@ -284,8 +365,9 @@ export class BabyCareComponent implements OnInit {
         this.context.fillText('Grump-o-meter:', 50, 520);
         //Grump Container
         this.context.fillStyle = '#337ab7';
+        this.context.strokeStyle = 'black';
         this.context.beginPath();
-        this.context.rect(50, 520, 300, 40); //x,y,width,height
+        this.context.rect(49, 520, 305, 40); //x,y,width,height
         this.context.closePath();
         this.context.fill();
         this.context.stroke();
@@ -293,13 +375,90 @@ export class BabyCareComponent implements OnInit {
         this.context.fillStyle = 'yellow';
         this.context.strokeStyle = 'white';
         this.context.beginPath();
-        var x = 25;
+        var x = 30;
         for (let i=0; i<this.babySelected.grumpiness; i++) {
-            x = x + 30;
-            this.context.rect(x, 525, 20, 30); //x,y,width,height
+            x = x + 25;
+            this.context.rect(x, 525, 17.5, 30); //x,y,width,height
         }
         this.context.closePath();
         this.context.fill();
         this.context.stroke();
+    }
+
+    drawAge() {
+        //Age Container
+        this.context.fillStyle = '#efefef';
+        this.context.beginPath();
+        this.context.rect(280, 20, 100, 100); //x,y,width,height
+        this.context.closePath();
+        this.context.fill();
+        this.context.stroke();
+        //Age Label
+        this.context.fillStyle = 'black';
+        this.context.font = "10pt 'Press Start 2P'";
+        this.context.fillText('Age:', 300, 50);
+        //Age Progress
+        this.context.fillStyle = '#337ab7';
+        this.context.font = "18pt 'Press Start 2P'";
+        this.context.fillText(this.babySelected.age, 300, 90);
+    }
+
+    drawLoss() {
+        this.drawAge();
+
+        //Loss Container
+        this.context.fillStyle = '#efefef';
+        this.context.beginPath();
+        this.context.rect(20, 280, 360, 300); //x,y,width,height
+        this.context.closePath();
+        this.context.fill();
+        this.context.stroke();
+        //1st Message
+        this.context.fillStyle = 'black';
+        this.context.font = "14pt 'Press Start 2P'";
+        this.context.fillText("You failed as a", 40, 320);
+        this.context.fillText("parent!", 40, 340);
+        //2nd Message
+        this.context.fillStyle = 'black';
+        this.context.font = "12pt 'Press Start 2P'";
+        this.context.fillText("It only took you", 40, 380);
+        this.context.fillStyle = '#d9534f';
+        this.context.fillText(this.babySelected.age + " years", 40, 400);
+        this.context.fillStyle = 'black';
+        this.context.fillText("to kill your baby!", 40, 420);
+        //Causes of Death
+        let y = 460;
+        for (let i=0; i<this.babySelected.causeOfDeath.length; i++) {
+            this.context.fillStyle = 'black';
+            this.context.font = "10pt 'Press Start 2P'";
+            this.context.fillText(this.babySelected.causeOfDeath[i], 40, y);
+            y += 20;
+        }
+    }
+
+    drawWin() {
+        this.drawAge();
+
+        //Win Container
+        this.context.fillStyle = '#efefef';
+        this.context.beginPath();
+        this.context.rect(20, 280, 360, 300); //x,y,width,height
+        this.context.closePath();
+        this.context.fill();
+        this.context.stroke();
+        //1st Message
+        this.context.fillStyle = 'black';
+        this.context.font = "14pt 'Press Start 2P'";
+        this.context.fillText("You succeeded", 40, 320);
+        this.context.fillText("as a parent!", 40, 340);
+        //2nd Message
+        this.context.fillStyle = 'black';
+        this.context.font = "12pt 'Press Start 2P'";
+        this.context.fillText("It only took you", 40, 380);
+        this.context.fillStyle = '#5cb85c';
+        this.context.fillText(this.babySelected.age + " years", 40, 400);
+        this.context.fillStyle = 'black';
+        this.context.fillText("to raise a good", 40, 420);
+        this.context.fillText("person!", 40, 440);
     }
 }
