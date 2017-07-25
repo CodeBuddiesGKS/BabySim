@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core'
+import { Router } from '@angular/router';
 
 import { AppService } from '../../core/app.service';
 
@@ -18,7 +19,8 @@ export class BabySelectorComponent implements OnInit {
     @Output() babySelected = new EventEmitter<Baby>();
     @Output() navigateTo = new EventEmitter<CurrentBabyPage>();
 
-    constructor(private appService: AppService) {}
+    constructor(private appService: AppService,
+                private router: Router,) {}
 
     ngOnInit() {
     }
@@ -41,5 +43,9 @@ export class BabySelectorComponent implements OnInit {
     conceive() {
         this.appService.load();
         this.navigateTo.emit(CurrentBabyPage.BabyGenerator);
+    }
+
+    goToScroll() {
+        this.router.navigate(['/scroll']);
     }
 }
