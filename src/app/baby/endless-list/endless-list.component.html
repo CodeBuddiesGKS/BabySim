@@ -1,27 +1,56 @@
-<h1>
-  Simple virtual list
-</h1>
+<div class="container">
+  <h1>
+    Verticle virtual list
+  </h1>
 
-<div class="status">
-  Showing <span class="badge">{{indices?.start + 1}}</span> - <span class="badge">{{indices?.end}}</span> of <span class="badge">{{items?.length}}</span>
-  <span>({{scrollItems?.length}} nodes)</span>
+  <div class="status">
+    Showing <span class="badge">{{indices?.start + 1}}</span> - <span class="badge">{{indices?.end}}</span> of <span class="badge">{{items?.length}}</span>
+    <span>({{scrollItems?.length}} nodes)</span>
+  </div>
+
+  <virtual-scroll 
+    [items]="items" 
+    (change)="indices = $event" 
+    (update)="onUpdate($event, 0)" 
+    style="height: 50vh; display: block">
+    <div *ngFor="let item of scrollItems">
+      <div>{{item.index}}</div>
+      <div>
+        <div>{{item.name}}</div>
+        <div>
+          <span>{{item.age}}/{{item.gender?.substr(0, 1).toUpperCase()}}</span>
+          <span>{{item.email}} | {{item.phone}}</span>
+        </div>
+        <div>{{item.address}}</div>
+      </div>
+      <hr>
+    </div>
+  </virtual-scroll>
 </div>
 
-<virtual-scroll 
-  [items]="items" 
-  (change)="indices = $event" 
-  (update)="onUpdate($event)" 
-  style="height: 50vh; display: block">
-  <div *ngFor="let item of scrollItems">
-    <div>{{item.index}}</div>
-    <div>
-      <div>{{item.name}}</div>
-      <div>
-        <span>{{item.age}}/{{item.gender?.substr(0, 1).toUpperCase()}}</span>
-        <span>{{item.email}} | {{item.phone}}</span>
-      </div>
-      <div>{{item.address}}</div>
-    </div>
-    <hr>
+<hr />
+
+<div class="container">
+  <h1>
+    Horizontal virtual list
+  </h1>
+
+  <div class="status">
+    Showing <span class="badge">{{indices2?.start + 1}}</span> - <span class="badge">{{indices2?.end}}</span> of <span class="badge">{{items2?.length}}</span>
+    <span>({{scrollItems2?.length}} nodes)</span>
   </div>
-</virtual-scroll>
+
+  <horizontal-virtual-scroll 
+    [items]="items2" 
+    (change)="indices2 = $event" 
+    (update)="onUpdate($event, 1)" 
+    style="height: 240px; display: block">
+    <div *ngFor="let item of scrollItems2" class="inline-block" style="width: 50%; height: 100%; background-color: yellow; border-right: 1px solid black">
+      <div>{{item.index}}</div>
+      <div>
+        <div>{{item.name}}</div>
+      </div>
+      <hr>
+    </div>
+  </horizontal-virtual-scroll>
+</div>
