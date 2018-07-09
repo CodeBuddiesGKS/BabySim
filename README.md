@@ -1,5 +1,5 @@
 # BabySim
-A Baby Simulator made in Angular2
+A Baby Simulator made in Angular4
 
 Instructions:
 1. Clone the repo to your computer
