@@ -1,6 +1,6 @@
 export class SkinColor {
-    static Pasty = "Pasty";
+    static Vanilla = "Vanilla";
     static Caramel = "Caramel";
+    static Hazelnut = "Hazelnut";
     static Mocha = "Mocha";
-    static Midnight = "Midnight";
 }

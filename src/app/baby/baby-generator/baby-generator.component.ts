@@ -17,22 +17,39 @@ import $ from 'jquery';
 })
 export class BabyGeneratorComponent implements OnInit {
     @Output() navigateTo = new EventEmitter<CurrentBabyPage>();
-    private eyeColor: EyeColor;
-    private gender: Gender;
-    private hairColor: HairColor;
     private name: string;
-    private skinColor: SkinColor;
+    private traits: any;
 
     constructor(private appService: AppService) {}
 
     ngOnInit() {
+        loadJSON("src/app/baby/baby-generator/models/traits.json").then(traits => {
+            this.traits = traits;
+        });
+    }
+
+    getSelectedTraits() {
+        let selectedTraits: any[] = [];
+        this.traits.forEach(trait => {
+            if (trait.selected) {
+                selectedTraits.push(trait.selected);
+            }
+        });
+        return selectedTraits;
     }
 
     giveBirth() {
-        if (this.eyeColor && this.gender && this.hairColor && this.name && this.skinColor) {
-            this.appService.babies.push(new Baby(this.eyeColor, this.gender, this.hairColor, this.name, this.skinColor));
+        let selectedTraits = this.getSelectedTraits();
+        if (this.name && this.traits.length===selectedTraits.length) {
+            this.appService.babies.push(
+                new Baby(this.name, selectedTraits)
+            );
             this.appService.load();
             this.navigateTo.emit(CurrentBabyPage.BabySelector);
         }
     }
+}
+
+export function loadJSON(url) {
+    return fetch(url).then(response => response.json());
 }

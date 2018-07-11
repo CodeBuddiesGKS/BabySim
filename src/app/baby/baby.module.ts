@@ -10,6 +10,7 @@ import { BabyCareComponent } from './baby-care/baby-care.component';
 import { BabyComponent } from './baby.component';
 import { BabyGeneratorComponent } from './baby-generator/baby-generator.component';
 import { BabySelectorComponent } from './baby-selector/baby-selector.component';
+import { BabyTraitComponent } from './baby-generator/baby-trait/baby-trait.component';
 
 //Models
 
@@ -26,6 +27,7 @@ import { BabySelectorComponent } from './baby-selector/baby-selector.component';
         BabyComponent,
         BabyGeneratorComponent,
         BabySelectorComponent,
+        BabyTraitComponent
     ]
 })
 export class BabyModule {

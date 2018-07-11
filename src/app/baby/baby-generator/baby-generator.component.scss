@@ -1,9 +1,10 @@
-
 .quad-flex-container {
   display: flex;
   flex-flow: row wrap;
-  display: -webkit-flex; /* Safari */
-  -webkit-flex-flow: row wrap; /* Safari 6.1+ */
+  display: -webkit-flex;
+  /* Safari */
+  -webkit-flex-flow: row wrap;
+  /* Safari 6.1+ */
   margin-bottom: 15px;
   color: white;
   .tl {
@@ -25,10 +26,11 @@
   display: flex;
   width: 50%;
 }
+
 .quad-flex-child:before {
-  content:'';
-  float:left;
-  padding-top:100%;
+  content: '';
+  float: left;
+  padding-top: 100%;
 }
 
 .quad-flex-content {
@@ -37,4 +39,12 @@
 
 .selected-tile {
   border: 4px dashed yellow;
+}
+
+.gb-scale-150-percent {
+  transform: scale(1.5);
+}
+
+.gb-translate-up-15px {
+  transform: translateY(-15px);
 }

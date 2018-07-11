@@ -1,0 +1,48 @@
+
+.quad-flex-container {
+    display: flex;
+    flex-flow: row wrap;
+    display: -webkit-flex; /* Safari */
+    -webkit-flex-flow: row wrap; /* Safari 6.1+ */
+    margin-bottom: 15px;
+    color: white;
+    .tl {
+      border-top-left-radius: 15px;
+    }
+    .tr {
+      border-top-right-radius: 15px;
+    }
+    .bl {
+      border-bottom-left-radius: 15px;
+    }
+    .br {
+      border-bottom-right-radius: 15px;
+    }
+  }
+  
+  .quad-flex-child {
+    cursor: pointer;
+    display: flex;
+    width: 50%;
+  }
+  .quad-flex-child:before {
+    content:'';
+    float:left;
+    padding-top:100%;
+  }
+  
+  .quad-flex-content {
+    margin: auto;
+  }
+  
+  .selected-tile {
+    border: 4px dashed yellow;
+  }
+
+  .gb-scale-150-percent {
+    transform: scale(1.5);
+  }
+  
+  .gb-translate-up-15px {
+    transform: translateY(-15px);
+  }

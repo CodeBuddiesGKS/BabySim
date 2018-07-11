@@ -11,10 +11,10 @@ export class AppService {
     public loading: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     public babies: Baby[] = [
-        new Baby(EyeColor.Blue, Gender.Male, HairColor.Blonde, 'Adam', SkinColor.Pasty),
-        new Baby(EyeColor.Green, Gender.Female, HairColor.Red, 'Eve', SkinColor.Caramel),
-        new Baby(EyeColor.Hazel, Gender.Transgender, HairColor.Brown, 'Jesse', SkinColor.Mocha),
-        new Baby(EyeColor.Brown, Gender.Other, HairColor.Black, 'Dren', SkinColor.Midnight),
+        new Baby('Adam', [Gender.Male, SkinColor.Vanilla, HairColor.Blonde, EyeColor.Blue]),
+        new Baby('Eve', [Gender.Female, SkinColor.Caramel, HairColor.Red, EyeColor.Green]),
+        new Baby('Jesse', [Gender.Transgender, SkinColor.Hazelnut, HairColor.Brown, EyeColor.Hazel]),
+        new Baby('Dren', [Gender.Other, SkinColor.Mocha, HairColor.Black, EyeColor.Brown]),
     ];
 
     constructor() {}

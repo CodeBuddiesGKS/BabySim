@@ -1,0 +1,97 @@
+[{
+    "label": "Pick a gender:",
+    "options": [{
+        "name": "Female",
+        "backgroundColor": "pink",
+        "icon": "<i class='fa fa-venus fa-4x' style='display: block;' aria-hidden='true'></i>"
+      },
+      {
+        "name": "Male",
+        "backgroundColor": "cornflowerblue",
+        "icon": "<i class='fa fa-mars fa-4x' style='display: block;' aria-hidden='true'></i>"
+      },
+      {
+        "name": "Transgender",
+        "backgroundColor": "purple",
+        "icon": "<i class='fa fa-transgender fa-4x' style='display: block;' aria-hidden='true'></i>"
+      },
+      {
+        "name": "Other",
+        "backgroundColor": "darkslategrey",
+        "icon": "<i class='fa fa-genderless fa-4x' style='display: block;' aria-hidden='true'></i>"
+      }
+    ]
+  },
+  {
+    "label": "Pick a skin color:",
+    "options": [{
+        "name": "Vanilla",
+        "backgroundColor": "#ffdbac",
+        "icon": "<i class='fa fa-smile-o fa-4x' style='display: block;' aria-hidden='true'></i>"
+      },
+      {
+        "name": "Caramel",
+        "backgroundColor": "#c68642",
+        "icon": "<i class='fa fa-smile-o fa-4x' style='display: block;' aria-hidden='true'></i>"
+      },
+      {
+        "name": "Hazelnut",
+        "backgroundColor": "#8d5524",
+        "icon": "<i class='fa fa-smile-o fa-4x' style='display: block;' aria-hidden='true'></i>"
+      },
+      {
+        "name": "Mocha",
+        "backgroundColor": "#2e160a",
+        "icon": "<i class='fa fa-smile-o fa-4x' style='display: block;' aria-hidden='true'></i>"
+      }
+    ]
+  },
+  {
+    "label": "Pick a hair color:",
+    "options": [{
+        "name": "Blonde",
+        "backgroundColor": "#f2da91",
+        "icon": "<div class='fa-stack fa-lg inline-block' style='transform: scale(1.5); margin-bottom: 10px;'><i class='fa fa-cloud fa-stack-1x' style='transform: translateY(-15px);' aria-hidden='true'></i><i class='fa fa-user fa-stack-2x' aria-hidden='true'></i></div>"
+      },
+      {
+        "name": "Red",
+        "backgroundColor": "#a53900",
+        "icon": "<div class='fa-stack fa-lg inline-block' style='transform: scale(1.5); margin-bottom: 10px;'><i class='fa fa-cloud fa-stack-1x' style='transform: translateY(-15px);' aria-hidden='true'></i><i class='fa fa-user fa-stack-2x' aria-hidden='true'></i></div>"
+      },
+      {
+        "name": "Brown",
+        "backgroundColor": "#4d2612",
+        "icon": "<div class='fa-stack fa-lg inline-block' style='transform: scale(1.5); margin-bottom: 10px;'><i class='fa fa-cloud fa-stack-1x' style='transform: translateY(-15px);' aria-hidden='true'></i><i class='fa fa-user fa-stack-2x' aria-hidden='true'></i></div>"
+      },
+      {
+        "name": "Black",
+        "backgroundColor": "#000000",
+        "icon": "<div class='fa-stack fa-lg inline-block' style='transform: scale(1.5); margin-bottom: 10px;'><i class='fa fa-cloud fa-stack-1x' style='transform: translateY(-15px);' aria-hidden='true'></i><i class='fa fa-user fa-stack-2x' aria-hidden='true'></i></div>"
+      }
+    ]
+  },
+  {
+    "label": "Pick an eye color:",
+    "options": [{
+        "name": "Blue",
+        "backgroundColor": "#699BCB",
+        "icon": "<i class='fa fa-eye fa-4x' style='display: block;' aria-hidden='true'></i>"
+      },
+      {
+        "name": "Green",
+        "backgroundColor": "#6B7E47",
+        "icon": "<i class='fa fa-eye fa-4x' style='display: block;' aria-hidden='true'></i>"
+      },
+      {
+        "name": "Hazel",
+        "backgroundColor": "#776536",
+        "icon": "<i class='fa fa-eye fa-4x' style='display: block;' aria-hidden='true'></i>"
+      },
+      {
+        "name": "Brown",
+        "backgroundColor": "#603101",
+        "icon": "<i class='fa fa-eye fa-4x' style='display: block;' aria-hidden='true'></i>"
+      }
+    ]
+  }
+]

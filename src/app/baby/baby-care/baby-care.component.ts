@@ -74,9 +74,9 @@ export class BabyCareComponent implements OnInit {
     }
 
     clean() {
-        this.babySelected.crapiness -= 4;
-        if (this.babySelected.crapiness < -1) {
-            this.babySelected.crapiness = -1;
+        this.babySelected.poopiness -= 4;
+        if (this.babySelected.poopiness < -1) {
+            this.babySelected.poopiness = -1;
         }
         this.age();
         if (!this.babySelected.isDead && !this.babySelected.isSuccessful) {
@@ -97,7 +97,7 @@ export class BabyCareComponent implements OnInit {
 
     cuddle() {
         this.babySelected.starviness += 2;
-        this.babySelected.crapiness += 2;
+        this.babySelected.poopiness += 2;
         this.babySelected.snooziness += 2;
         this.babySelected.grumpiness--;
         if (this.babySelected.grumpiness == 0) {
@@ -115,23 +115,23 @@ export class BabyCareComponent implements OnInit {
         if (this.babySelected.starviness > 12) {
             this.babySelected.causeOfDeath.push(this.babySelected.name + " starved to death!!!");
         }
-        this.babySelected.crapiness++;
-        if (this.babySelected.crapiness > 12) {
-            this.babySelected.causeOfDeath.push(this.babySelected.name + " crapped to death!!!");
+        this.babySelected.poopiness++;
+        if (this.babySelected.poopiness > 12) {
+            this.babySelected.causeOfDeath.push(this.babySelected.name + " pooped to death!!!");
         }
         this.babySelected.snooziness++;
         if (this.babySelected.snooziness > 12) {
             this.babySelected.causeOfDeath.push(this.babySelected.name + " died from sleep");
             this.babySelected.causeOfDeath.push("deprivation!!!");
         }
-        if (this.babySelected.starviness > 12 || this.babySelected.crapiness > 12 || this.babySelected.snooziness > 12) {
+        if (this.babySelected.starviness > 12 || this.babySelected.poopiness > 12 || this.babySelected.snooziness > 12) {
             this.die();
         }
     }
 
     die() {
         this.babySelected.isDead = true;
-        this.backButtonName = "Bury Baby Corpse";
+        this.backButtonName = "Bury Baby";
         this.drawLoss();
     }
 
@@ -189,10 +189,10 @@ export class BabyCareComponent implements OnInit {
 
     getSkinColor(baby) {
         switch (baby.skinColor) {
-            case 'Pasty': return '#ffdbac';
+            case 'Vanilla': return '#ffdbac';
             case 'Caramel': return '#c68642';
-            case 'Mocha': return '#8d5524';
-            case 'Midnight': return '#2e160a';
+            case 'Hazelnut': return '#8d5524';
+            case 'Mocha': return '#2e160a';
         }
     }
 
@@ -329,11 +329,11 @@ export class BabyCareComponent implements OnInit {
         this.context.fill();
         this.context.stroke();
 
-        //Crap Label
+        //Poop Label
         this.context.fillStyle = 'black';
         this.context.font = "10pt 'Press Start 2P'";
-        this.context.fillText('Crap-o-meter:', 50, 380);
-        //Crap Container
+        this.context.fillText('Poop-o-meter:', 50, 380);
+        //Poop Container
         this.context.fillStyle = '#337ab7';
         this.context.strokeStyle = 'black';
         this.context.beginPath();
@@ -341,12 +341,12 @@ export class BabyCareComponent implements OnInit {
         this.context.closePath();
         this.context.fill();
         this.context.stroke();
-        //Crap Progress
+        //Poop Progress
         this.context.fillStyle = 'yellow';
         this.context.strokeStyle = 'white';
         this.context.beginPath();
         var x = 30;
-        for (let i=0; i<this.babySelected.crapiness; i++) {
+        for (let i=0; i<this.babySelected.poopiness; i++) {
             x = x + 25;
             this.context.rect(x, 385, 17.5, 30); //x,y,width,height
         }
@@ -478,7 +478,11 @@ export class BabyCareComponent implements OnInit {
         this.context.fillStyle = '#5cb85c';
         this.context.fillText(this.babySelected.age + " years", 40, 400);
         this.context.fillStyle = 'black';
-        this.context.fillText("to raise a good", 40, 420);
-        this.context.fillText("person!", 40, 440);
+        this.context.fillText("to raise a healthy", 40, 420);
+        this.context.fillText("baby!", 40, 440);
+        //3rd Message
+        this.context.fillStyle = 'black';
+        this.context.font = "10pt 'Press Start 2P'";
+        this.context.fillText("I bet that was fun...", 40, 480);
     }
 }

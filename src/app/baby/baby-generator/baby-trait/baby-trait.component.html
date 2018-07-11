@@ -1,0 +1,15 @@
+
+<div class="col-xs-6 text-center">
+  <div>{{trait.label}}</div>
+  <div class="quad-flex-container">
+    <div *ngFor="let option of trait.options"
+          [ngClass]="tileClass(option)"
+          [ngStyle]="tileStyle(option)"
+          (click)="tileClicked(option)">
+      <div class="quad-flex-content">
+        <div [innerHTML]="this.sanitizer.bypassSecurityTrustHtml(option.icon)"></div>
+        <div style="display: block;">{{option.name}}</div>
+      </div>
+    </div>
+  </div>
+</div>

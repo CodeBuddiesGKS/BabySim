@@ -9,7 +9,7 @@ import { Gender } from '../../core/models/gender';
 import { HairColor } from '../../core/models/hair-color';
 import { SkinColor } from '../../core/models/skin-color';
 
-@Component( {
+@Component({
     selector: 'baby-selector',
     templateUrl: './baby-selector.component.html',
     styleUrls: ['./baby-selector.component.scss']
